@@ -1,11 +1,11 @@
 Name:           intel-pmwatch
-Version:        0
+Version:        3.2.0
 Release:        1%{?dist}
 Summary:        Intel PMWatch(PersistentMemoryWatch) tool
 
 License:        MIT
 URL:            https://github.com/intel/intel-pmwatch
-Source0:        https://github.com/intel/intel-pmwatch/archive/ef5432874a56c11b4ca4ed60b6b458eeb813604f.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/intel/intel-pmwatch/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 ExclusiveArch:  x86_64
 
@@ -29,7 +29,7 @@ description
 
 
 %prep
-%autosetup -n %{name}-ef5432874a56c11b4ca4ed60b6b458eeb813604f
+%autosetup -n %{name}-%{version}
 ./autogen.sh
 ./configure --libdir=/usr/lib64
 
@@ -51,7 +51,6 @@ make
 /usr/local/bin/pmwatch
 /usr/local/bin/pmwatch-stop
 
-
 %files -n intel-pmwatch-devel
 /usr/lib64/libpmwapi.a
 /usr/lib64/libpmwapi.la
@@ -59,6 +58,7 @@ make
 /usr/lib64/libpmwcollect.la
 /usr/local/include/pmw_api.h
 /usr/local/include/pmw_struct.h
+
 
 %changelog
 * Mon Mar 09 2020 Piotr Rabiega <piotrx.rabiega@intel.com> - 1-1
