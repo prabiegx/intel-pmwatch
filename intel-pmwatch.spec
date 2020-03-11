@@ -14,12 +14,13 @@ BuildRequires:  libipmctl-devel
 BuildRequires:  make
 
 %description
-Intel PMWatch (PersistentMemoryWatch) is a tool that monitors and reports the performance
-and health information metrics of the Intel Optane DC Persistent Memory.
+Intel PMWatch (PersistentMemoryWatch) is a tool that monitors and reports
+the performance and health information metrics of the Intel Optane DC
+Persistent Memory.
 
 
 %package -n intel-pmwatch-devel
-Summary: Developement files to build against intel-pmwatch
+Summary: Development files to build against intel-pmwatch
 
 Requires: intel-pmwatch = %{version}-%{release}
 
@@ -33,18 +34,21 @@ Requires: intel-pmwatch = %{version}-%{release}
 ./configure --libdir=%{_libdir} --bindir=%{_bindir} --includedir=%{_includedir}
 
 %build
+chmod -x README.md 
 make
 
 %install
 %make_install
 
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+
+
 %files
 %license COPYING
 %doc README.md
-%{_libdir}/libpmwapi.so
 %{_libdir}/libpmwapi.so.0
 %{_libdir}/libpmwapi.so.0.0.0
-%{_libdir}/libpmwcollect.so
 %{_libdir}/libpmwcollect.so.0
 %{_libdir}/libpmwcollect.so.0.0.0
 %{_bindir}/pmwatch
@@ -53,6 +57,8 @@ make
 %files -n intel-pmwatch-devel
 %{_libdir}/libpmwapi.a
 %{_libdir}/libpmwapi.la
+%{_libdir}/libpmwapi.so
+%{_libdir}/libpmwcollect.so
 %{_libdir}/libpmwcollect.a
 %{_libdir}/libpmwcollect.la
 %{_includedir}/pmw_api.h
@@ -60,5 +66,5 @@ make
 
 
 %changelog
-* Mon Mar 09 2020 Piotr Rabiega <piotrx.rabiega@intel.com> - 1-1
+* Wed Mar 11 2020 Piotr Rabiega <piotrx.rabiega@intel.com> - 3.2.0-1
 - initial packaging
