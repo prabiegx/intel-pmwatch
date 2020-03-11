@@ -30,7 +30,7 @@ Requires: intel-pmwatch = %{version}-%{release}
 %prep
 %autosetup -n %{name}-%{version}
 ./autogen.sh
-./configure --libdir=%{_libdir}
+./configure --libdir=%{_libdir} --bindir=%{_bindir} --includedir=%{_includedir}
 
 %build
 make
@@ -47,16 +47,16 @@ make
 %{_libdir}/libpmwcollect.so
 %{_libdir}/libpmwcollect.so.0
 %{_libdir}/libpmwcollect.so.0.0.0
-/usr/local/bin/pmwatch
-/usr/local/bin/pmwatch-stop
+%{_bindir}/pmwatch
+%{_bindir}/pmwatch-stop
 
 %files -n intel-pmwatch-devel
 %{_libdir}/libpmwapi.a
 %{_libdir}/libpmwapi.la
 %{_libdir}/libpmwcollect.a
 %{_libdir}/libpmwcollect.la
-/usr/local/include/pmw_api.h
-/usr/local/include/pmw_struct.h
+%{_includedir}/pmw_api.h
+%{_includedir}/pmw_struct.h
 
 
 %changelog
