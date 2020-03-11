@@ -58,9 +58,9 @@ make
 %{_libdir}/libpmwapi.a
 %{_libdir}/libpmwapi.la
 %{_libdir}/libpmwapi.so
-%{_libdir}/libpmwcollect.so
 %{_libdir}/libpmwcollect.a
 %{_libdir}/libpmwcollect.la
+%{_libdir}/libpmwcollect.so
 %{_includedir}/pmw_api.h
 %{_includedir}/pmw_struct.h
 
