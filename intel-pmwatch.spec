@@ -11,6 +11,7 @@ ExclusiveArch:  x86_64
 
 BuildRequires:  gcc
 BuildRequires:  libipmctl-devel
+BuildRequires:  make
 
 %description
 Intel PMWatch (PersistentMemoryWatch) is a tool that monitors and reports the performance
@@ -20,18 +21,16 @@ and health information metrics of the Intel Optane DC Persistent Memory.
 %package -n intel-pmwatch-devel
 Summary: Developement files to build against intel-pmwatch
 
-Provides: intel-pmwatch-static = %{version}-%{release}
-
 Requires: intel-pmwatch = %{version}-%{release}
 
 %description -n intel-pmwatch-devel
-description
+%{summary}
 
 
 %prep
 %autosetup -n %{name}-%{version}
 ./autogen.sh
-./configure --libdir=/usr/lib64
+./configure --libdir=%{_libdir}
 
 %build
 make
@@ -42,20 +41,20 @@ make
 %files
 %license COPYING
 %doc README.md
-/usr/lib64/libpmwapi.so
-/usr/lib64/libpmwapi.so.0
-/usr/lib64/libpmwapi.so.0.0.0
-/usr/lib64/libpmwcollect.so
-/usr/lib64/libpmwcollect.so.0
-/usr/lib64/libpmwcollect.so.0.0.0
+%{_libdir}/libpmwapi.so
+%{_libdir}/libpmwapi.so.0
+%{_libdir}/libpmwapi.so.0.0.0
+%{_libdir}/libpmwcollect.so
+%{_libdir}/libpmwcollect.so.0
+%{_libdir}/libpmwcollect.so.0.0.0
 /usr/local/bin/pmwatch
 /usr/local/bin/pmwatch-stop
 
 %files -n intel-pmwatch-devel
-/usr/lib64/libpmwapi.a
-/usr/lib64/libpmwapi.la
-/usr/lib64/libpmwcollect.a
-/usr/lib64/libpmwcollect.la
+%{_libdir}/libpmwapi.a
+%{_libdir}/libpmwapi.la
+%{_libdir}/libpmwcollect.a
+%{_libdir}/libpmwcollect.la
 /usr/local/include/pmw_api.h
 /usr/local/include/pmw_struct.h
 
