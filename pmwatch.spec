@@ -1,4 +1,4 @@
-Name:           intel-pmwatch
+Name:           pmwatch
 Version:        3.2.0
 Release:        1%{?dist}
 Summary:        Intel PMWatch(PersistentMemoryWatch) tool
@@ -19,17 +19,17 @@ the performance and health information metrics of the Intel Optane DC
 Persistent Memory.
 
 
-%package -n intel-pmwatch-devel
+%package -n pmwatch-devel
 Summary: Development files to build against intel-pmwatch
 
-Requires: intel-pmwatch = %{version}-%{release}
+Requires: pmwatch = %{version}-%{release}
 
-%description -n intel-pmwatch-devel
+%description -n pmwatch-devel
 %{summary}
 
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -n intel-%{name}-%{version}
 ./autogen.sh
 ./configure --libdir=%{_libdir} --bindir=%{_bindir} --includedir=%{_includedir}
 
@@ -54,7 +54,7 @@ make
 %{_bindir}/pmwatch
 %{_bindir}/pmwatch-stop
 
-%files -n intel-pmwatch-devel
+%files -n pmwatch-devel
 %{_libdir}/libpmwapi.a
 %{_libdir}/libpmwapi.la
 %{_libdir}/libpmwapi.so
