@@ -31,10 +31,10 @@ Requires: pmwatch = %{version}-%{release}
 %prep
 %autosetup -n intel-%{name}-%{version}
 ./autogen.sh
-./configure --libdir=%{_libdir} --bindir=%{_bindir} --includedir=%{_includedir}
+./configure --libdir=%{_libdir} --bindir=%{_bindir} --includedir=%{_includedir} CFLAGS='-g'
 
 %build
-chmod -x README.md 
+chmod -x README.md src/inc/*.h src/*.c
 make
 
 %install
