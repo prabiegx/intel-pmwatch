@@ -9,9 +9,12 @@ Source0:        https://github.com/intel/intel-pmwatch/archive/v%{version}.tar.g
 
 ExclusiveArch:  x86_64
 
-BuildRequires:  gcc
+BuildRequires:  automake
+BuildRequires:  kmod-devel
 BuildRequires:  libipmctl-devel
-BuildRequires:  make
+BuildRequires:  libtool
+BuildRequires:  libuuid-devel
+BuildRequires:  systemd-devel
 
 %description
 Intel PMWatch (PersistentMemoryWatch) is a tool that monitors and reports
