@@ -25,6 +25,8 @@ Persistent Memory.
 %package -n intel-pmwatch-devel
 Summary: Development files to build against intel-pmwatch
 
+Provides: intel-pmwatch-static = %{version}-%{release}
+
 Requires: intel-pmwatch = %{version}-%{release}
 
 %description -n intel-pmwatch-devel
@@ -42,6 +44,7 @@ make
 
 %install
 %make_install
+rm -f %{buildroot}/%{_libdir}/*.la
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -59,10 +62,8 @@ make
 
 %files -n intel-pmwatch-devel
 %{_libdir}/libpmwapi.a
-%{_libdir}/libpmwapi.la
 %{_libdir}/libpmwapi.so
 %{_libdir}/libpmwcollect.a
-%{_libdir}/libpmwcollect.la
 %{_libdir}/libpmwcollect.so
 %{_includedir}/pmw_api.h
 %{_includedir}/pmw_struct.h
