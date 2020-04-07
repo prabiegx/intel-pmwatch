@@ -70,5 +70,5 @@ rm -f %{buildroot}/%{_libdir}/*.la
 
 
 %changelog
-* Wed Mar 11 2020 Piotr Rabiega <piotrx.rabiega@intel.com> - 3.2.0-1
+* Tue Apr 07 2020 Piotr Rabiega <piotrx.rabiega@intel.com> - 3.2.0-1
 - initial packaging
