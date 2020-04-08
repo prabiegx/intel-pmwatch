@@ -1,5 +1,5 @@
 Name:           intel-pmwatch
-Version:        3.2.0
+Version:        3.2.1
 Release:        1%{?dist}
 Summary:        Intel PMWatch(PersistentMemoryWatch) tool
 
@@ -40,7 +40,7 @@ Requires: intel-pmwatch = %{version}-%{release}
 
 %build
 chmod -x README.md src/inc/*.h src/*.c
-make
+make %{?_smp_mflags}
 
 %install
 %make_install
@@ -70,5 +70,5 @@ rm -f %{buildroot}/%{_libdir}/*.la
 
 
 %changelog
-* Tue Apr 07 2020 Piotr Rabiega <piotrx.rabiega@intel.com> - 3.2.0-1
+* Wed Apr 08 2020 Piotr Rabiega <piotrx.rabiega@intel.com> - 3.2.1-1
 - initial packaging
