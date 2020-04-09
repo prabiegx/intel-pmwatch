@@ -10,6 +10,7 @@ Source0:        https://github.com/intel/intel-pmwatch/archive/v%{version}.tar.g
 ExclusiveArch:  x86_64
 
 BuildRequires:  automake
+BuildRequires:  gcc-c++
 BuildRequires:  kmod-devel
 BuildRequires:  libipmctl-devel
 BuildRequires:  libtool
